@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>名前:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>価格:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>個数:</strong>
+<%= @product.stock %>
+</p>
+
+<p>
+  <%= form_with model: @product do |form|  %>
+    <%= form.label :deriveryDate, '受取日時指定' %>
+    <%= form.date_field :deriveryDate　%>
+
+    <%= form.label :deriveryTime, '受取時間指定' %>
+    <%= form.select :deriveryTime, {'午前中': 1, '12:00~14:00': 2,'14:00~16:00': 3,'16:00~18:00': 4,'18:00~20:00': 5,}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+
+    <div class="form-group">
+      <%= form.submit 'confirm', class: 'btn btn-primary btn-block' %>
+    </div>
+  <%end%>
+</p>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+<%# <%= form_tag(action: :pay, method: :post) do %>
+  <%# <script type="text/javascript" %>
+    <%# src="https://checkout.pay.jp" %>
+    <%# class="payjp-button" %>
+    <%# data-key="pk_test_0383a1b8f91e8a6e3ea0e2a9"> %>
+  <%# </script> %>
+<%# <% end %>
